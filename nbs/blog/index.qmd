@@ -1,0 +1,13 @@
+---
+title: Law and Code
+subtitle: Demonstrating how code, AI, and machine learning can advance legal research
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: false
+  feed: true
+page-layout: full
+---
+

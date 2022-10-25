@@ -1,0 +1,9 @@
+project:
+  output-dir: _docs
+
+website:
+  title: "Obiter.AI"
+  site-url: "https://simon-lawyer.github.io/obiter"
+  description: "Computational research tools for lawyers"
+  repo-branch: main
+  repo-url: "https://github.com/simon-lawyer/obiter"

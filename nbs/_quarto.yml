@@ -1,0 +1,36 @@
+project:
+  type: website
+
+format:
+  html:
+    theme: pulse
+    css: styles.css
+    toc: true
+
+website:
+  twitter-card: true
+  open-graph: true
+  favicon: 'images/logo.png'
+  repo-actions: [issue]
+  navbar:
+    background: primary
+    search: true
+    right:
+        - text: 'Blog'
+          href: blog/index.qmd
+        - text: 'About'
+          href: 'about.ipynb'
+        - icon: twitter
+          href: https://twitter.com/simonwallace/
+  page-footer: 
+    left: "Simon Wallace (2022)" 
+    right: 
+      - icon: github
+        href: https://github.com/simon-lawyer/
+      - icon: twitter 
+        href: https://twitter.com/simonwallace/
+          
+  sidebar:
+    style: floating
+
+metadata-files: [nbdev.yml, sidebar.yml]
