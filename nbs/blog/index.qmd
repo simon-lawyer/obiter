@@ -1,6 +1,6 @@
 ---
-title: Practical Coding for Legal Researchers
-subtitle: The law meets computational research methods
+title: Coding Law
+subtitle: Exploring law with computational methods
 listing:
   sort: "date desc"
   contents: "posts"
