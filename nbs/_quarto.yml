@@ -8,8 +8,7 @@ format:
     toc: true
 
 website:
-  twitter-card: true
-      creator: @simonwallace
+  twitter-card: 
       image: images/computer_calls.jpg
       description: Obiter.Ai brings open source library with a set of computational research tools for lawyers.
   open-graph: true
