@@ -15,13 +15,22 @@ website:
   navbar:
     background: primary
     search: true
+    left:
+        - text: 'Computational Research Tools'
+          file: install.ipynb
     right:
         - text: 'Blog'
           href: blog/index.qmd
         - text: 'About'
-          href: 'about.ipynb'
+          file: about.ipynb
         - icon: twitter
           href: https://twitter.com/simonwallace/
+  sidebar:
+    - contents:
+        - install.ipynb
+        - 00_CanLii.ipynb
+
+
   page-footer: 
     left: "Simon Wallace (2022)" 
     right: 
@@ -30,7 +39,5 @@ website:
       - icon: twitter 
         href: https://twitter.com/simonwallace/
           
-  sidebar:
-    style: floating
 
 metadata-files: [nbdev.yml, sidebar.yml]

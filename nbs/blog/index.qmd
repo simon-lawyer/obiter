@@ -9,5 +9,6 @@ listing:
   categories: false
   feed: true
 page-layout: full
+sidebar: false
 ---
 
