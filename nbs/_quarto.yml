@@ -9,6 +9,7 @@ format:
 
 website:
   google-analytics: "G-Z003ZL327P"
+  twitter-card: true
   open-graph: true
   favicon: 'images/logo.png'
   repo-actions: [issue]
