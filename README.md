@@ -19,10 +19,10 @@ alt="“A computer calls a database,” AI artist (2022)" />
 
 </div>
 
-Over the past few decades, the volume of legal data increased
-exponentially. In Canada, an average size tribunal will issue tens of
-millions of words each year. Thousands of hours of proceedings will be
-recorded. Trillions of words will be filed as evidence.
+The volume of legal data increased exponentially over the past decades.
+In Canada, an average size tribunal will issue tens of millions of words
+each year. Thousands of hours of proceedings will be recorded. Trillions
+of words will be filed as evidence.
 
 Making sense of, and understanding this data, is a pressing challenge
 for scholars and lawyers. Is the law consistent? Do different
