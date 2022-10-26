@@ -4,6 +4,6 @@ project:
 website:
   title: "Obiter.Ai"
   site-url: "https://simon-lawyer.github.io/obiter"
-  description: "Computational research tools for lawyers"
+  description: "Obiter.Ai is an open-source Python library that helps lawyers and law students leverage computational research methodologies."
   repo-branch: main
   repo-url: "https://github.com/simon-lawyer/obiter"
