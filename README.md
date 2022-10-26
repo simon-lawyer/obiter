@@ -10,7 +10,7 @@ empirical enquiries.
 <div class="column-margin">
 
 <figure>
-<img src="images/computer_calls.jpg" class="preview-image"
+<img src="images/computer_calls.jpg"
 data-fig-alt="&quot;Computer calls a database,&quot; AI artist (2022)"
 alt="“A computer calls a database,” AI artist (2022)" />
 <figcaption aria-hidden="true">“A computer calls a database,” AI artist
@@ -36,11 +36,10 @@ Appeals Tribunal](https://www.wsiat.on.ca/en/home/announcements.html),
 issued [2,053 written
 decisions](https://www.canlii.org/en/on/onwsiat/nav/date/2021/). If each
 decision averages 2,500 words in length, the tribunal outputted
-5,132,500 words—the equivalent of 9 editions of *War and Peace*.
-Practically, this sheer quantity of data means that the jurisprudence
-regarding workers, disability, and compensation cannot be
-comprehensively grasped or synthesized by researchers. Who could ever
-read so much?
+5,132,500 words—the equivalent of 9 editions of *War and Peace*. The
+volume of data means that the jurisprudence regarding workers,
+disability, and compensation cannot be comprehensively grasped or
+synthesized by researchers. Who could ever read so much?
 
 But computers are not so limited. Recent advances in artificial
 intelligence and machine learning have significantly expanded machines’
