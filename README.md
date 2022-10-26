@@ -10,7 +10,7 @@ empirical enquiries.
 <div class="column-margin">
 
 <figure>
-<img src="images/computer_calls.jpg"
+<img src="images/computer_calls.png"
 data-fig-alt="&quot;Computer calls a database,&quot; AI artist (2022)"
 alt="“A computer calls a database,” AI artist (2022)" />
 <figcaption aria-hidden="true">“A computer calls a database,” AI artist
