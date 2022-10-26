@@ -1,6 +1,6 @@
 ---
-title: Law and Code
-subtitle: Demonstrating how code, AI, and machine learning can advance legal research
+title: Practical Coding for Legal Researchers
+subtitle: The law meets computational research methods
 listing:
   sort: "date desc"
   contents: "posts"
