@@ -8,8 +8,9 @@ format:
     toc: true
 
 website:
+  google-analytics: "G-Z003ZL327P"
   twitter-card:
-      image: http://obiter.ai/images/computer_calls.jpg
+      image: 'http://obiter.ai/images/computer_calls.jpg'
   open-graph: true
   favicon: 'images/logo.png'
   repo-actions: [issue]
