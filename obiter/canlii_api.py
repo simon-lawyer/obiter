@@ -110,7 +110,7 @@ class canlii_api:
             df = pd.DataFrame()
         return df
     
-    def citations_edge_list(self, df):
+    def citations_edge_list(self, df, databaseId):
     
         citations_edge_list = pd.DataFrame()
         count = 0
@@ -120,8 +120,10 @@ class canlii_api:
             title = df.loc[index,'title']
             caseId = df.loc[index,'caseId']
             case_citation = df.loc[index,'citation']
-            cited_df = api_caller.internal_cites(databaseId=databaseId, caseId=caseId)
+            
             try:
+                cited_df = self.internal_cites(databaseId=databaseId, caseId=caseId)
+
                 cited_df['original_caseID'] = caseId
                 cited_df['original_case_citation'] = case_citation
                 cited_df['original_case_title'] = title
@@ -129,7 +131,8 @@ class canlii_api:
                 cited_df.rename(columns={'caseId':'cited_case_caseId', 'citation':'cited_case_citation', 'title':'cited_case_title'}, inplace=True)
                 cited_df = cited_df[['original_caseID', 'original_case_citation', 'original_case_title','cited_case_caseId', 'cited_case_title','cited_case_citation']]
             except:
-                cited_df = pd.DataFrame()
+                cited_df['original_caseID'] = caseId
+                cited_df['error'] = 'y'
 
             citations_edge_list = pd.concat([citations_edge_list,cited_df], axis=0)
 
@@ -142,8 +145,9 @@ class canlii_api:
         
         return citations_edge_list
     
-    def keywords_edge_list(self, df, databaseId=''):
+    def keywords_edge_list(self, df, databaseId):
         keywords_edge_list = pd.DataFrame()
+        total_number_pulls = df.shape[0]
 
         for index,row in df.iterrows():
             databaseId = databaseId
