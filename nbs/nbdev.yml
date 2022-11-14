@@ -3,7 +3,7 @@ project:
 
 website:
   title: "Obiter.Ai"
-  site-url: "Obiter.Ai"
+  site-url: "https://obiter.ai/obiter"
   description: "Computational research tools for lawyers"
   repo-branch: main
   repo-url: "https://github.com/simon-lawyer/obiter"
