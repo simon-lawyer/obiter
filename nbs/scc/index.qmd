@@ -1,0 +1,21 @@
+---
+title: Supreme Court of Canada (AI) Hearing Transcripts
+subtitle: Transcripts made with state-of-the-art artificial intelligence speech recognition technology 
+listing:
+  sort: "date desc"
+  contents: "posts"
+  sort-ui: false
+  filter-ui: false
+  categories: false
+  feed: true
+  type: table
+  date-format: short
+  fields: [title, date]
+page-layout: full
+sidebar: false
+---
+**Technology:** These transcripts were made with a customized Python program that leveraged state-of-the-art [transcription](https://openai.com/blog/whisper/), [diarization](https://github.com/pyannote/pyannote-audio), [speech recognition](https://speechbrain.github.io), [video parsing](https://opencv.org) and [natural language processing](https://spacy.io) technology. (Open source code coming soon).
+
+**Coverage:** These transcripts cover every [webcast](https://scc-csc.ca/case-dossier/info/webcasts-webdiffusions-eng.aspx) published by the Supreme Court of Canada between January 1, 2020 and November 3, 2022. 
+
+**Limitations:** Transcription is an art, not a science. In some cases, AI transcriptionists make serious errors of judgement and inappropriately guess at meaning. This means that it often gets names wrong and may hallucinate meaning that is not present in the original audio. These transcripts are published exclusively for educational and research purposes.

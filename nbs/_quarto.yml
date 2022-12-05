@@ -19,6 +19,8 @@ website:
     left:
         - text: 'Computational Research Tools'
           file: install.ipynb
+        - text: 'Supreme (AI) Transcripts'
+          file: scc/index.qmd
     right:
         - text: 'Blog'
           href: blog/index.qmd
