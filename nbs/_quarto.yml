@@ -40,7 +40,6 @@ website:
       - icon: github
         href: https://github.com/simon-lawyer/
       - icon: twitter 
-        href: https://twitter.com/simonwallace/
-          
+        href: https://twitter.com/simonwallace/    
 
-metadata-files: [nbdev.yml, sidebar.yml]
+metadata-files: [nbdev.yml]
