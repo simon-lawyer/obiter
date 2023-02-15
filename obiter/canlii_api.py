@@ -121,9 +121,10 @@ class canlii_api:
             caseId = df.loc[index,'caseId']
             case_citation = df.loc[index,'citation']
             
+            cited_df = pd.DataFrame()
+            cited_df = self.internal_cites(databaseId=databaseId, caseId=caseId)
+            
             try:
-                cited_df = self.internal_cites(databaseId=databaseId, caseId=caseId)
-
                 cited_df['original_caseID'] = caseId
                 cited_df['original_case_citation'] = case_citation
                 cited_df['original_case_title'] = title
@@ -133,6 +134,7 @@ class canlii_api:
             except:
                 cited_df['original_caseID'] = caseId
                 cited_df['error'] = 'y'
+                
 
             citations_edge_list = pd.concat([citations_edge_list,cited_df], axis=0)
 
