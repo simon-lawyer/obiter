@@ -27,4 +27,7 @@ d = { 'settings': { 'branch': 'main',
                                    'obiter.canlii_api.canlii_api.list_decisions': ( 'canlii.html#canlii_api.list_decisions',
                                                                                     'obiter/canlii_api.py'),
                                    'obiter.canlii_api.canlii_api.list_tribunals': ( 'canlii.html#canlii_api.list_tribunals',
-                                                                                    'obiter/canlii_api.py')}}}
+                                                                                    'obiter/canlii_api.py')},
+            'obiter.wgnd': { 'obiter.wgnd.wgnd': ('wgnd.html#wgnd', 'obiter/wgnd.py'),
+                             'obiter.wgnd.wgnd.__init__': ('wgnd.html#wgnd.__init__', 'obiter/wgnd.py'),
+                             'obiter.wgnd.wgnd.get_gender': ('wgnd.html#wgnd.get_gender', 'obiter/wgnd.py')}}}

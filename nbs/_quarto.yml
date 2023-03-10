@@ -32,6 +32,7 @@ website:
     - contents:
         - install.ipynb
         - 00_CanLii.ipynb
+        - 01_wgnd.ipynb
 
 
   page-footer: 
