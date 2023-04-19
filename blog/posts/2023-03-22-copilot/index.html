@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Wallace">
+<meta name="dcterms.date" content="2023-03-22">
+<meta name="description" content="Can decision-makers use Microsoft Word if it’s tightly integrated with AI?">
+
+<title>Obiter.Ai - Bringing AI to government through the backdoor</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z003ZL327P"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z003ZL327P', { 'anonymize_ip': true});
+</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Obiter.Ai - Bringing AI to government through the backdoor">
+<meta property="og:description" content="Can decision-makers use Microsoft Word if it's tightly integrated with AI?">
+<meta property="og:image" content="https://obiter.ai/blog/posts/2023-03-22-copilot/images/automated_decision.jpg">
+<meta property="og:site-name" content="Obiter.Ai">
+<meta name="twitter:title" content="Obiter.Ai - Bringing AI to government through the backdoor">
+<meta name="twitter:description" content="Can decision-makers use Microsoft Word if it's tightly integrated with AI?">
+<meta name="twitter:image" content="https://obiter.ai/blog/posts/2023-03-22-copilot/images/automated_decision.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Obiter.Ai</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../install.html">
+ <span class="menu-text">Computational Research Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../scc/index.html">
+ <span class="menu-text">Supreme (AI) Transcripts</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#ai-comes-to-microsoft-word" id="toc-ai-comes-to-microsoft-word" class="nav-link active" data-scroll-target="#ai-comes-to-microsoft-word">AI comes to Microsoft Word</a>
+  <ul class="collapse">
+  <li><a href="#the-directive-on-automated-decision-making" id="toc-the-directive-on-automated-decision-making" class="nav-link" data-scroll-target="#the-directive-on-automated-decision-making">The Directive on Automated Decision-Making</a></li>
+  <li><a href="#algorithmic-impact-assessment-for-copilot" id="toc-algorithmic-impact-assessment-for-copilot" class="nav-link" data-scroll-target="#algorithmic-impact-assessment-for-copilot">Algorithmic Impact Assessment for Copilot</a></li>
+  <li><a href="#reconsidering-the-directive" id="toc-reconsidering-the-directive" class="nav-link" data-scroll-target="#reconsidering-the-directive">Reconsidering the Directive</a></li>
+  <li><a href="#summing-up" id="toc-summing-up" class="nav-link" data-scroll-target="#summing-up">Summing up</a></li>
+  </ul></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/simon-lawyer/obiter/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Bringing AI to government through the backdoor</h1>
+</div>
+
+<div>
+  <div class="description">
+    Can decision-makers use Microsoft Word if it’s tightly integrated with AI?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Wallace </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">March 22, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<section id="ai-comes-to-microsoft-word" class="level1">
+<h1>AI comes to Microsoft Word</h1>
+<p>Earlier this week Microsoft announced introduced <a href="https://blogs.microsoft.com/blog/2023/03/16/introducing-microsoft-365-copilot-your-copilot-for-work/">365 copilot</a>, an integration across its suite of business applications with OpenAI’s GPT models. Promising a “whole new way to work,” one of copilot’s core features relates to writing. Sometime in “the months ahead,” Microsoft Word will write use large language models to write first drafts, offer feedback, and suggest edits.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/automated_decision.jpg" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Prompt: “A computer, carefully weighing the evidence, decides whether a person is entitled to social assistance”</figcaption><p></p>
+</figure>
+</div>
+<p>For governments, this technology raises a host of concerns (what are the privacy implications of streaming text to Microsoft’s servers? How secure are the connections? What happens of the AI models aren’t very good in particular domains?) but I want to address a discrete sub-question: would it be legal for IT departments to deploy copilot in Canadian courtrooms and tribunals?</p>
+<p>I say probably no, at least for federal tribunals and departments charged with making administrative decisions. And my reason is simple: to do so would run afoul of the <a href="https://www.tbs-sct.canada.ca/pol/doc-eng.aspx?id=32592">Directive on Automated Decision-Making</a>. This said, and this is a matter I return to at the end, the Directive is not as clear as it could or should be on this issue. The Treasury Board of Canada Secretariat, which is responsible for the Directive, is in the process of updating the text. My hope is that the new text will explicitly say that it is not appropriate for government decision makers to use tools that can auto-generate and edit text, especially when the model used to produce that text is proprietary and unreviewable.</p>
+<p>The well documented (see, for an example, <a href="https://www.ruhabenjamin.com/race-after-technology">Ruha Benjamin</a>) capacity of AI to reason inappropriately, to deploy racist ways of thinking, to internalize and hide lines of reasoning that would inappropriate for human decision makers to use, all mean that extra care is required when it comes to the use of AI in decision making contexts.</p>
+<section id="the-directive-on-automated-decision-making" class="level2">
+<h2 class="anchored" data-anchor-id="the-directive-on-automated-decision-making">The Directive on Automated Decision-Making</h2>
+<p>The Directive, which came into force in 2019, regulates the use of systems in the federal government that use technology to perform “tasks that would ordinarily require biological brainpower to accomplish, such as making sense of spoken language, learning behaviours, or solving problems.”</p>
+<p>When a government department seeks to use an automated decision making tool, the Directive requires the organization to complete at <a href="https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html">algorithmic impact assessment</a>. Depending on how the system is assessed, the agency may use the system, may use it after deploying risk mitigation measures, or may not use the system at all.</p>
+<p>As of today, 11 federal projects have <a href="https://search.open.canada.ca/opendata/?collection=aia&amp;page=1&amp;sort=date_modified+desc">published</a> their assessments. Most of those assessments (and automated decision making projects) are, interestingly, in the immigration domain.</p>
+</section>
+<section id="algorithmic-impact-assessment-for-copilot" class="level2">
+<h2 class="anchored" data-anchor-id="algorithmic-impact-assessment-for-copilot">Algorithmic Impact Assessment for Copilot</h2>
+<p>Would Microsoft’s new copilot feature be caught by the directive? Yes, assuming that a government user is making a decision and is using a Microsoft product with copilot assistance to draft, write, or make the decision.</p>
+<p>I completed a theoretical algorithmic impact assessment for copilot to see how it would be treated by the process. I assumed that the stakes for the decision were relatively high but that a human would always review, and potentially modify, any copilot-generated decision or decision content. The assessment, even though the information I supplied was limited, determined that using copilot in a decision-making context had a ‘level 3’ impact, which is the second highest rating available.</p>
+<p>Level 3 systems <em>can</em> be used in government, subject to certain limitations. The agency must notify the public about the use of the system, seek independent peer review of the system, ensure all users have training on the system, and get explicit approval from the organizations deputy head to deploy the system.</p>
+<p>My view is that these requirements are functionally impossible for any government department to comply with, at least based on what we know about copilot today. Unless Microsoft and OpenAI make their models available to independent auditors, it will be impossible for any government department to conduct the required peer review of the system.</p>
+</section>
+<section id="reconsidering-the-directive" class="level2">
+<h2 class="anchored" data-anchor-id="reconsidering-the-directive">Reconsidering the Directive</h2>
+<p>As Treasury Board reconsiders the Directive, copilot raises two issues for consideration.</p>
+<p>First, the Directive should be stricter. Originally drafted in 2019, the Directive reads like an out of date document. Its subject is not the generative AI technologies that have flourished in the past six months, but in more traditional machine learning and prediction systems. To state it plainly, there is a qualitative difference between (usually rules-based, usually supervised, and usually deterministic) machine learning systems and programs that can generate bespoke text.</p>
+<p>When a person is hired to be an adjudicator to make important decisions, and they are asked to used words and text to justify those decisions, the public expects that that person to write the text. The Directive should say as much.</p>
+<p>Second, the Directive’s definitions should be clearer. Right now, reasonable people could disagree about whether copilot is even captured by the Directive. Consider how the Directive defines its scope:</p>
+<blockquote class="blockquote">
+<p>This Directive applies to any system, tool, or statistical models used to recommend or make an administrative decision about a client.</p>
+</blockquote>
+<p>But do the terms “recommend” or “make” capture the relationship between a human and a machine, like copilot, that generates and edits text?</p>
+<p>Likewise, the Directive’s concept of an “administrative decision” is too narrow because it simply imports the traditional definition used by the Courts for administrative law purposes (i.e.&nbsp;something that “affects legal rights, privileges or interests”).</p>
+<p>There is good text already in the Directive that should be the basis of it going forward. Instead of tethering the Directive to the acts of making or recommending administrative decision, the Directive should build out from its excellent definition of ‘automated decision making system,’ which:</p>
+<blockquote class="blockquote">
+<p>Includes any technology that either assists or replaces the judgement of human decision-makers. These systems draw from fields like statistics, linguistics, and computer science, and use techniques such as rules-based systems, regression, predictive analytics, machine learning, deep learning, and neural nets.</p>
+</blockquote>
+<p>This definition is considerably clearer and more useful for explaining that the Directive applies whenever an automated system engages in human decision making. Putting this definition explicitly at the centre of the Directive will make it more adaptable as the technology changes and new unanticipated use cases for that technology emerge.</p>
+</section>
+<section id="summing-up" class="level2">
+<h2 class="anchored" data-anchor-id="summing-up">Summing up</h2>
+<p>I am sure that Microsoft is going to try to sell copilot licenses to the Government of Canada. The federal government ought to be intentional about how it engages with this technology and decide whether–in the context of adjudication, for example–it is even appropriate to use a tool like copilot.</p>
+<p>One way of shaping those decisions in a principled way is to think about how the Directive does, does not, and should interact with new generative AI technology. Here I suggest, first, that the Directive does apply and that it will preclude Canada from deploying copilot (at least in traditional adjudicative spaces). This is because any use of copilot in an adjudicative space will trigger the requirement for peer review of the AI system, which will be impossible because the underlying copilot models are proprietary. Second, I suggest that the Directive should be redrafted to be more explicit about its scope to make it clear the copilot-like technology is off-side in traditional adjudicative spaces.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Simon Wallace (2022)</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/simon-lawyer/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

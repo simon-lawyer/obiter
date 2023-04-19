@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Wallace">
+<meta name="dcterms.date" content="2022-10-21">
+<meta name="description" content="The number of arrests made using civil mental health law increases">
+
+<title>Obiter.Ai - Visualizing Mental Health Act Apprehensions in Toronto</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z003ZL327P"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z003ZL327P', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Obiter.Ai - Visualizing Mental Health Act Apprehensions in Toronto">
+<meta property="og:description" content="The number of arrests made using civil mental health law increases">
+<meta property="og:image" content="https://obiter.ai/blog/posts/2022-10-22-civil-mental-health-apprehensions/arrest_location.png">
+<meta property="og:site-name" content="Obiter.Ai">
+<meta property="og:image:height" content="890">
+<meta property="og:image:width" content="1485">
+<meta name="twitter:title" content="Obiter.Ai - Visualizing Mental Health Act Apprehensions in Toronto">
+<meta name="twitter:description" content="The number of arrests made using civil mental health law increases">
+<meta name="twitter:image" content="https://obiter.ai/blog/posts/2022-10-22-civil-mental-health-apprehensions/arrest_location.png">
+<meta name="twitter:image-height" content="890">
+<meta name="twitter:image-width" content="1485">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Obiter.Ai</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../install.html">
+ <span class="menu-text">Computational Research Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../scc/index.html">
+ <span class="menu-text">Supreme (AI) Transcripts</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#import-the-libraries-and-the-dataset" id="toc-import-the-libraries-and-the-dataset" class="nav-link active" data-scroll-target="#import-the-libraries-and-the-dataset">Import the libraries and the dataset</a></li>
+  <li><a href="#get-summary-information" id="toc-get-summary-information" class="nav-link" data-scroll-target="#get-summary-information">Get summary information</a></li>
+  <li><a href="#year-over-year-increases" id="toc-year-over-year-increases" class="nav-link" data-scroll-target="#year-over-year-increases">Year over year increases</a></li>
+  <li><a href="#age-group-differences" id="toc-age-group-differences" class="nav-link" data-scroll-target="#age-group-differences">Age group differences</a></li>
+  <li><a href="#location-of-arrest" id="toc-location-of-arrest" class="nav-link" data-scroll-target="#location-of-arrest">Location of arrest</a></li>
+  <li><a href="#time-of-year-day-of-week-and-time-of-day" id="toc-time-of-year-day-of-week-and-time-of-day" class="nav-link" data-scroll-target="#time-of-year-day-of-week-and-time-of-day">Time of year, day of week, and time of day</a></li>
+  <li><a href="#legal-bases-for-the-apprehension" id="toc-legal-bases-for-the-apprehension" class="nav-link" data-scroll-target="#legal-bases-for-the-apprehension">Legal bases for the apprehension</a></li>
+  </ul>
+<div class="toc-actions"><div><i class="bi bi-github"></i></div><div class="action-links"><p><a href="https://github.com/simon-lawyer/obiter/issues/new" class="toc-action">Report an issue</a></p></div></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Visualizing <em>Mental Health Act</em> Apprehensions in Toronto</h1>
+</div>
+
+<div>
+  <div class="description">
+    The number of arrests made using civil mental health law increases
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Wallace </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2022</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p>The City of Toronto recently a <a href="https://open.toronto.ca/dataset/mental-health-apprehensions/">dataset</a> of civil <em>Mental Health Act</em> apprehensions. In this notebook I show how to use Python to visualize and analyze the data. The <a href="https://data.torontopolice.on.ca/pages/persons-in-crisis">Toronto Police Service</a> has also published its own visualizations. This is a teaching notebook — my goal is to demonstrate one way computational tools can be used for quick and effective analyses of data.</p>
+<p>If the code looks daunting, don’t worry! There are lots of great learning resources out there. If you’re entirely new to Python, <a href="https://automatetheboringstuff.com">start here</a>. If you’re ready to start doing data anlaysis, poke around the official <a href="https://pandas.pydata.org/docs/getting_started/index.html">Pandas tutorials</a>.</p>
+<p>For this project, we will use pandas to organize the data and seaborn to create the visualizations. I will set out all of my code and methodology. First, let’s import the libraries and load the dataset.</p>
+<section id="import-the-libraries-and-the-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="import-the-libraries-and-the-dataset">Import the libraries and the dataset</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn.objects <span class="im">as</span> so</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_json(<span class="st">'https://ckan0.cf.opendata.inter.prod-toronto.ca/dataset/mental-health-apprehensions/resource/4be57d43-830d-4316-90ac-3b09f31b4e6f/download/mental-health-apprehensions.json'</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>df.drop(<span class="st">'_id'</span>, axis<span class="op">=</span><span class="dv">1</span>, inplace<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="get-summary-information" class="level2">
+<h2 class="anchored" data-anchor-id="get-summary-information">Get summary information</h2>
+<p>We can get summary information using the ‘describe’ method:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.describe(include<span class="op">=</span><span class="st">'all'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>EventUniqueID</th>
+      <th>ReportDate</th>
+      <th>ReportYear</th>
+      <th>ReportMonth</th>
+      <th>ReportDayofWeek</th>
+      <th>ReportHour</th>
+      <th>OccurrenceDate</th>
+      <th>OccurrenceYear</th>
+      <th>OccurrenceMonth</th>
+      <th>OccurrenceDayofWeek</th>
+      <th>OccurrenceHour</th>
+      <th>ApprehensionType</th>
+      <th>Division</th>
+      <th>HoodID</th>
+      <th>NeighbourhoodName</th>
+      <th>PremisesType</th>
+      <th>Sex</th>
+      <th>AgeGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907.000000</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>84849.000000</td>
+      <td>87907</td>
+      <td>87907.000000</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>84608.000000</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907</td>
+      <td>87907</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>87678</td>
+      <td>3103</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>3116</td>
+      <td>NaN</td>
+      <td>12</td>
+      <td>7</td>
+      <td>NaN</td>
+      <td>5</td>
+      <td>18</td>
+      <td>141</td>
+      <td>141</td>
+      <td>7</td>
+      <td>3</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>GO-2019798628</td>
+      <td>2022-06-01T04:00:00</td>
+      <td>NaN</td>
+      <td>May</td>
+      <td>Thursday</td>
+      <td>NaN</td>
+      <td>2022-06-01T04:00:00</td>
+      <td>NaN</td>
+      <td>May</td>
+      <td>Thursday</td>
+      <td>NaN</td>
+      <td>Mha Sec 17 (Power Of App)</td>
+      <td>D14</td>
+      <td>75</td>
+      <td>Church-Yonge Corridor (75)</td>
+      <td>Apartment</td>
+      <td>Male</td>
+      <td>25 to 34</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>3</td>
+      <td>59</td>
+      <td>NaN</td>
+      <td>8239</td>
+      <td>13655</td>
+      <td>NaN</td>
+      <td>59</td>
+      <td>NaN</td>
+      <td>8248</td>
+      <td>13638</td>
+      <td>NaN</td>
+      <td>69170</td>
+      <td>9675</td>
+      <td>3214</td>
+      <td>3214</td>
+      <td>35475</td>
+      <td>50135</td>
+      <td>24861</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2018.214772</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.750474</td>
+      <td>NaN</td>
+      <td>2018.213191</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>13.680373</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2.426461</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.902043</td>
+      <td>NaN</td>
+      <td>2.427254</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>5.789953</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2014.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>2002.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>1.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2016.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.000000</td>
+      <td>NaN</td>
+      <td>2016.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>10.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2018.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.000000</td>
+      <td>NaN</td>
+      <td>2018.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>14.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2020.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.000000</td>
+      <td>NaN</td>
+      <td>2020.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>18.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>2022.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.000000</td>
+      <td>NaN</td>
+      <td>2022.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>23.000000</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<p>There’s a lot here that is immediately interesting. A few observations:</p>
+<ul>
+<li>There have been a lot of <em>Mental Health Act</em> apprehensions in Toronto. This dataset reports 87,907 arrests between 2014 and 2022.</li>
+<li>Apprehsnions are a mid-day phenomena, with most detentions six hours before or after 1PM.</li>
+<li>The top month for apprehensions is May, and the top day of the week for arrests is Thursday.</li>
+<li>More men were arrested than women, and the top age demographic for arrests is 25-34.</li>
+</ul>
+<p>We can visualize some other trends.</p>
+</section>
+<section id="year-over-year-increases" class="level2">
+<h2 class="anchored" data-anchor-id="year-over-year-increases">Year over year increases</h2>
+<p>We can chart the change year over year and parse out reports regarding the person’s gender.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gender_year <span class="op">=</span> df.groupby(<span class="st">'ReportYear'</span>)[<span class="st">'Sex'</span>].value_counts().to_frame().rename(columns<span class="op">=</span>{<span class="st">'Sex'</span>:<span class="st">'Total'</span>})</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>so.Plot(gender_year, x<span class="op">=</span><span class="st">'ReportYear'</span>, y<span class="op">=</span><span class="st">'Total'</span>, color<span class="op">=</span><span class="st">'Sex'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-5-output-1.png" width="755" height="445"></p>
+</div>
+</div>
+<p>Between 2014 and 2021 <em>Mental Health Act</em> arrests almost doubled. It also looks like that rate of increase is slightly higher for men over women, but we will have to look a bit closer to be sure. It also looks like there was a marked uptick of arrests in 2021. Perhaps this is related to the pandemic?</p>
+<p>Why the steep drop off in 2022? The year is not over yet!</p>
+</section>
+<section id="age-group-differences" class="level2">
+<h2 class="anchored" data-anchor-id="age-group-differences">Age group differences</h2>
+<p>We can look at different age categories:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>age_year <span class="op">=</span> df.groupby(<span class="st">'ReportYear'</span>)[<span class="st">'AgeGroup'</span>].value_counts().to_frame().rename(columns<span class="op">=</span>{<span class="st">'AgeGroup'</span>:<span class="st">'Total'</span>})</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>so.Plot(age_year, x<span class="op">=</span><span class="st">'ReportYear'</span>, y<span class="op">=</span><span class="st">'Total'</span>, color<span class="op">=</span><span class="st">'AgeGroup'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-6-output-1.png" width="755" height="445"></p>
+</div>
+</div>
+<p>The 25-34 age group is far and away the largest plurality of cases.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>filt <span class="op">=</span> df[<span class="st">'ReportYear'</span>] <span class="op">==</span> <span class="dv">2021</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>df[filt][<span class="st">'AgeGroup'</span>].value_counts(normalize<span class="op">=</span><span class="va">True</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<pre><code>25 to 34        0.302505
+35 to 44        0.203738
+18 to 24        0.183327
+45 to 54        0.122542
+55 to 64        0.104000
+65+             0.074841
+Not Recorded    0.009047
+Name: AgeGroup, dtype: float64</code></pre>
+</div>
+</div>
+</section>
+<section id="location-of-arrest" class="level2">
+<h2 class="anchored" data-anchor-id="location-of-arrest">Location of arrest</h2>
+<p>People can get arrested in all sorts of places. Let’s see where individuals are apprehended:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>prem_year <span class="op">=</span> df.groupby(<span class="st">'ReportYear'</span>)[<span class="st">'PremisesType'</span>].value_counts().to_frame().rename(columns<span class="op">=</span>{<span class="st">'PremisesType'</span>:<span class="st">'Total'</span>})</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>so.Plot(prem_year, x<span class="op">=</span><span class="st">'ReportYear'</span>, y<span class="op">=</span><span class="st">'Total'</span>, color<span class="op">=</span><span class="st">'PremisesType'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-8-output-1.png" width="743" height="445"></p>
+</div>
+</div>
+<p>This is a surprising and interesting visualization because I did not expect apartments — peoples’ homes — to be the main site of arrest. This implies that people are being arrested after they or someone in their household calls for help.</p>
+</section>
+<section id="time-of-year-day-of-week-and-time-of-day" class="level2">
+<h2 class="anchored" data-anchor-id="time-of-year-day-of-week-and-time-of-day">Time of year, day of week, and time of day</h2>
+<p>Different months:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> df[<span class="st">'OccurrenceMonth'</span>].value_counts(normalize<span class="op">=</span><span class="va">False</span>).to_frame()</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>month <span class="op">=</span> month.reindex([<span class="st">"January"</span>, <span class="st">"February"</span>, <span class="st">"March"</span>, <span class="st">'April'</span>, <span class="st">'May'</span>,<span class="st">'June'</span>,<span class="st">'July'</span>,<span class="st">'August'</span>,<span class="st">'September'</span>,<span class="st">'October'</span>,<span class="st">'November'</span>,<span class="st">'December'</span>])</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>so.Plot(month, x<span class="op">=</span>month.index, y<span class="op">=</span><span class="st">'OccurrenceMonth'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-9-output-1.png" width="598" height="445"></p>
+</div>
+</div>
+<p>This shows that March, April, May, and June are the biggest months for arrests.</p>
+<p>Different days:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>day_week <span class="op">=</span> df[<span class="st">'OccurrenceDayofWeek'</span>].value_counts().to_frame()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>day_week <span class="op">=</span> day_week.reindex([<span class="st">'Monday    '</span>, <span class="st">'Tuesday   '</span>,<span class="st">'Wednesday '</span>,<span class="st">'Thursday  '</span>,<span class="st">'Friday    '</span>,<span class="st">'Saturday  '</span>,<span class="st">'Sunday    '</span>])</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>so.Plot(day_week,x<span class="op">=</span>day_week.index,y<span class="op">=</span><span class="st">'OccurrenceDayofWeek'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-10-output-1.png" width="599" height="445"></p>
+</div>
+</div>
+<p>There’s a huge drop off in arrests on the weekend.</p>
+</section>
+<section id="legal-bases-for-the-apprehension" class="level2">
+<h2 class="anchored" data-anchor-id="legal-bases-for-the-apprehension">Legal bases for the apprehension</h2>
+<p>Under what authority are people getting arrested?</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>app_type <span class="op">=</span> df.groupby(<span class="st">'ReportYear'</span>)[<span class="st">'ApprehensionType'</span>].value_counts(normalize<span class="op">=</span><span class="va">False</span>).to_frame(name<span class="op">=</span><span class="st">'total'</span>).reset_index()</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>so.Plot(app_type, x<span class="op">=</span><span class="st">'ReportYear'</span>, y<span class="op">=</span><span class="st">'total'</span>, color<span class="op">=</span><span class="st">'ApprehensionType'</span>).add(so.Line())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-11-output-1.png" width="870" height="445"></p>
+</div>
+</div>
+<p>This is by far the most interesting graphic. <a href="https://www.canlii.org/en/on/laws/stat/rso-1990-c-m7/latest/rso-1990-c-m7.html">Section 17</a> of the <em>Mental Health Act</em> gives the police the power to arrest people in some circumstances because of their psychiatric condition. The police use of this power has steadily increased. Is this because they are charging fewer people criminally (and diverting them from the criminal justice system)? Is it that calls are on the rise? Further (interesting) research is required.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Simon Wallace (2022)</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/simon-lawyer/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

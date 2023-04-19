@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.475">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Simon Wallace">
+<meta name="dcterms.date" content="2023-04-19">
+<meta name="description" content="Which scholars are cited the most by the Supreme Court of Canada?">
+
+<title>Obiter.Ai - Revisting (computationally) an earlier study regarding SCC citation practices</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<link href="../../../images/logo.png" rel="icon" type="image/png">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-Z003ZL327P"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-Z003ZL327P', { 'anonymize_ip': true});
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+<meta property="og:title" content="Obiter.Ai - Revisting (computationally) an earlier study regarding SCC citation practices">
+<meta property="og:description" content="Which scholars are cited the most by the Supreme Court of Canada?">
+<meta property="og:image" content="https://obiter.ai/blog/posts/2023-04-19-scc-citations/judge_prof.jpg">
+<meta property="og:site-name" content="Obiter.Ai">
+<meta name="twitter:title" content="Obiter.Ai - Revisting (computationally) an earlier study regarding SCC citation practices">
+<meta name="twitter:description" content="Which scholars are cited the most by the Supreme Court of Canada?">
+<meta name="twitter:image" content="https://obiter.ai/blog/posts/2023-04-19-scc-citations/judge_prof.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark ">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">Obiter.Ai</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../install.html">
+ <span class="menu-text">Computational Research Tools</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../scc/index.html">
+ <span class="menu-text">Supreme (AI) Transcripts</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../blog/index.html">
+ <span class="menu-text">Blog</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../about.html">
+ <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/"><i class="bi bi-twitter" role="img">
+</i> 
+ <span class="menu-text"></span></a>
+  </li>  
+</ul>
+              <div id="quarto-search" class="" title="Search"></div>
+          </div> <!-- /navcollapse -->
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Revisting (computationally) an earlier study regarding SCC citation practices</h1>
+</div>
+
+<div>
+  <div class="description">
+    Which scholars are cited the most by the Supreme Court of Canada?
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Simon Wallace </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">April 19, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<!-- WARNING: THIS FILE WAS AUTOGENERATED! DO NOT EDIT! -->
+<p>In 1993, Vaughan Black and Nicholas Richter published <a href="https://digitalcommons.schulichlaw.dal.ca/dlj/vol16/iss2/3/">*Did She Mention My Name: Citation of Academic Authority by the Supreme Court of Canada</a>, 1985-1990* in the Dalhousie Law Journal. The article examined the citation practices of Supreme Court of Canada justices and found that, <em>inter alia</em> SCC judges cited 2 scholarly texts per judgement.</p>
+<p><img src="https://obiter.ai/blog/posts/2023-04-19-scc-citations/judge_prof.jpg" class="img-fluid"></p>
+<p>To my knowledge, the study has not been repeated since. And little wonder: it was a labour intensive project. In addition to the two co-authors, the research team appears to have included three research assistants. They would review each set of judgements issued by the SCC, identify the citations, and then manually build a dataset.</p>
+<p>In this notebook, I want to show how how we can use computational methodologies to repeat and extend this study with just a few hours of work. We will see how it goes, but my plan is to answer two questions:</p>
+<ul>
+<li>are SCC judges citing more or fewer scholarly texts per decision?</li>
+<li>who is cited the most?</li>
+</ul>
+<p>My main ambition is to showcase what can be done when researchers have ready access to lots of legal data. Until recently, it was difficult for researchers to access law in bulk. Fortunately, Professor Sean Rehaag of Osgoode Hall Law School just published a <a href="https://refugeelab.ca/bulk-data/scc/">comprehensive dataset of SCC judgements</a>. I want to show one way how researchers can interact with this dataset.</p>
+<p>We will begin by downloading the dataset and loading it into a Pandas dataframe. Pandas is like Excel for Python. It is a powerful tool for working with data. We will use it to clean the data and to answer our questions.</p>
+<div class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#first we import pandas to manage and manipulate the data</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#we use the json library to read the data</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#we use requests to download the data</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> requests</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Set variables</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>start_year <span class="op">=</span> <span class="dv">1990</span>  <span class="co"># We will pick up from the last year studied by Black and Richter</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>end_year <span class="op">=</span> <span class="dv">2022</span>  <span class="co"># Last year of data sought (2022 -)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># load data</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>base_ulr <span class="op">=</span> <span class="st">'https://raw.githubusercontent.com/Refugee-Law-Lab/scc_bulk_data/master/DATA/YEARLY/'</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># retrieve the data</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>results <span class="op">=</span> []</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> year <span class="kw">in</span> <span class="bu">range</span>(start_year, end_year<span class="op">+</span><span class="dv">1</span>):</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    url <span class="op">=</span> base_ulr <span class="op">+</span> <span class="ss">f'</span><span class="sc">{</span>year<span class="sc">}</span><span class="ss">.json'</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    results.extend(requests.get(url).json())</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="co"># convert to dataframe</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame(results)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="42">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># filter by language</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">'language'</span>] <span class="op">==</span> <span class="st">'en'</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can take a look at the data. Let’s begin by looking at the first five rows.</p>
+<div class="cell" data-execution_count="43">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>df.head(<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="43">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>citation</th>
+      <th>citation2</th>
+      <th>year</th>
+      <th>name</th>
+      <th>language</th>
+      <th>decision_date</th>
+      <th>source_url</th>
+      <th>scraped_timestamp</th>
+      <th>unofficial_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>[1990] 1 SCR 1005</td>
+      <td></td>
+      <td>1990</td>
+      <td>R. v. Fitzgibbon</td>
+      <td>en</td>
+      <td>1990-05-17</td>
+      <td>https://decisions.scc-csc.ca/scc-csc/scc-csc/e...</td>
+      <td>2022-09-01</td>
+      <td>R. v. Fitzgibbon\nCollection\nSupreme Court Ju...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>[1990] 1 SCR 1020</td>
+      <td></td>
+      <td>1990</td>
+      <td>R. v. Saunders</td>
+      <td>en</td>
+      <td>1990-05-17</td>
+      <td>https://decisions.scc-csc.ca/scc-csc/scc-csc/e...</td>
+      <td>2022-09-01</td>
+      <td>R. v. Saunders\nCollection\nSupreme Court Judg...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>[1990] 1 SCR 1025</td>
+      <td></td>
+      <td>1990</td>
+      <td>R. v. Sioui</td>
+      <td>en</td>
+      <td>1990-05-24</td>
+      <td>https://decisions.scc-csc.ca/scc-csc/scc-csc/e...</td>
+      <td>2022-09-01</td>
+      <td>R. v. Sioui\nCollection\nSupreme Court Judgmen...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>[1990] 1 SCR 1075</td>
+      <td></td>
+      <td>1990</td>
+      <td>R. v. Sparrow</td>
+      <td>en</td>
+      <td>1990-05-31</td>
+      <td>https://decisions.scc-csc.ca/scc-csc/scc-csc/e...</td>
+      <td>2022-09-01</td>
+      <td>R. v. Sparrow\nCollection\nSupreme Court Judgm...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>[1990] 1 SCR 1123</td>
+      <td></td>
+      <td>1990</td>
+      <td>Reference re ss.&nbsp;193 and 195.1(1)(C) of the cr...</td>
+      <td>en</td>
+      <td>1990-05-31</td>
+      <td>https://decisions.scc-csc.ca/scc-csc/scc-csc/e...</td>
+      <td>2022-09-01</td>
+      <td>Reference re ss. 193 and 195.1(1)(C) of the cr...</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="44">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="44">
+<pre><code>(2677, 9)</code></pre>
+</div>
+</div>
+<p>This shows us how the data looks. On each row we have the citation, the year, the language, the decision_date, the source_url, the time Professor Rehaag scraped the data, at the text.</p>
+<p>The interesting thing for our purposes (take my word for it, I won’t reproduce a judgement here) is that the beginning of each SCC case includes a section entitled ‘Authors cited’ right before a section that always begins in capital letters explaining where the matter was appealed from. We can try to computationally isolate that section. We will use some regex magic to do this.</p>
+<div class="cell" data-execution_count="46">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> split_on_three_uppercase_letters(s):</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Define a regex pattern to match three uppercase letters in a row</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    pattern <span class="op">=</span> <span class="vs">r'[A-Z]</span><span class="sc">{3}</span><span class="vs">'</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Use re.split to split the string based on the pattern</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>    result <span class="op">=</span> re.split(pattern, s)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> result</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">#split the text on the first occurence of 'Authors Cited'</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>first <span class="op">=</span> df.loc[<span class="dv">0</span>, <span class="st">'unofficial_text'</span>].split(<span class="st">'Authors Cited'</span>)[<span class="dv">1</span>]</span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">#split the text as soon as three uppercase letters are found</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> split_on_three_uppercase_letters(first)[<span class="dv">0</span>]</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(result)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Canada. Law Reform Commission. Working Paper 5. Restitution and Compensation. Ottawa: Information Canada, 1974.
+Duncan, Lewis. Bankruptcy in Canada, 3rd ed. By Lewis Duncan and John D. Honsberger. Toronto: Canadian Legal Authors, 1961.
+</code></pre>
+</div>
+</div>
+<p>Great! That worked really well. Let’s break up the data a bit more so each citation is isolated.</p>
+<div class="cell" data-execution_count="47">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>cites <span class="op">=</span> [citation <span class="cf">for</span> citation <span class="kw">in</span> result.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>) <span class="cf">if</span> citation <span class="op">!=</span> <span class="st">''</span>]</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>cites</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="47">
+<pre><code>['Canada. Law Reform Commission. Working Paper 5. Restitution and Compensation. Ottawa: Information Canada, 1974.',
+ 'Duncan, Lewis. Bankruptcy in Canada, 3rd ed. By Lewis Duncan and John D. Honsberger. Toronto: Canadian Legal Authors, 1961.']</code></pre>
+</div>
+</div>
+<p>Now let’s try to run this accross the entire dataset. There will certainly be problems that arise, but we can deal with them as they come up. We are going to make a new dataframe with citations.</p>
+<div class="cell" data-execution_count="48">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>master <span class="op">=</span> pd.DataFrame()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,row <span class="kw">in</span> df.iterrows():</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>        first <span class="op">=</span> row[<span class="st">'unofficial_text'</span>].split(<span class="st">'Authors Cited'</span>)[<span class="dv">1</span>]</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>        result <span class="op">=</span> split_on_three_uppercase_letters(first)[<span class="dv">0</span>]</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>        cites <span class="op">=</span> [citation <span class="cf">for</span> citation <span class="kw">in</span> result.split(<span class="st">'</span><span class="ch">\n</span><span class="st">'</span>) <span class="cf">if</span> citation <span class="op">!=</span> <span class="st">''</span>]</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> citation <span class="kw">in</span> cites:</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>            row_df <span class="op">=</span> pd.DataFrame({<span class="st">'year'</span>: [row[<span class="st">'year'</span>]],</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'decision_citation'</span>: [row[<span class="st">'citation'</span>]],</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>                            <span class="st">'cites'</span>: [citation]})</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>            master <span class="op">=</span> pd.concat([master, row_df], axis<span class="op">=</span><span class="dv">0</span>, ignore_index<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span>:</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>        count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'There were </span><span class="sc">{</span>count<span class="sc">}</span><span class="ss"> cases where this method failed.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>There were 1115 cases where this method failed.</code></pre>
+</div>
+</div>
+<p>So right away we get an error. It looks like in this decision there isn’t a section entitled ‘Authors cited’. Let’s take a look at the text.</p>
+<p>So there were 1115 cases where this didn’t work. We can see what this was of the total by looking at the shape of the dataframe.</p>
+<div class="cell" data-execution_count="57">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'The dataframe has these dimensions: </span><span class="sc">{</span>df<span class="sc">.</span>shape<span class="sc">}</span><span class="ss">.'</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>math <span class="op">=</span> <span class="bu">int</span>((<span class="dv">1115</span><span class="op">/</span>df.shape[<span class="dv">0</span>])<span class="op">*</span><span class="dv">100</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'This method failed on </span><span class="sc">{</span>math<span class="sc">}</span><span class="ss">% of the cases.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>The dataframe has these dimensions: (2677, 9).
+This method failed on 41% of the cases.</code></pre>
+</div>
+</div>
+<p>It is probable that many of these cases just don’t cite scholarly work. That would be our first interesting finding. But let’s look to see if we can confirm that.</p>
+<div class="cell" data-execution_count="59">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'unofficial_text'</span>].<span class="bu">str</span>.contains(<span class="st">'Authors Cited'</span>).value_counts()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="59">
+<pre><code>True     1562
+False    1115
+Name: unofficial_text, dtype: int64</code></pre>
+</div>
+</div>
+<p>Confirmed. If this were a real study, we would need to sample some decisions to confirm that that’s the case. But for now let’s assume that it is.</p>
+<p>Let’s see what we can learn about our citations by plotting the number of citations each year and the average number of citations per case, per year.</p>
+<div class="cell" data-execution_count="68">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>master.groupby(<span class="st">'year'</span>)[<span class="st">'decision_citation'</span>].count().plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="68">
+<pre><code>&lt;AxesSubplot: xlabel='year'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-11-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<div class="cell" data-execution_count="179">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>master</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="179">
+
+<div>
+
+<table class="dataframe table table-sm table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <th>year</th>
+      <th>decision_citation</th>
+      <th>cites</th>
+      <th>authors</th>
+      <th>title</th>
+      <th>publication</th>
+      <th>year_pub</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1990</td>
+      <td>[1990] 1 SCR 1005</td>
+      <td>Canada. Law Reform Commission. Working Paper 5...</td>
+      <td>Canada. Law Reform Commission</td>
+      <td>Restitution and Compensation</td>
+      <td>Working Paper 5</td>
+      <td>1974</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1990</td>
+      <td>[1990] 1 SCR 1005</td>
+      <td>Duncan, Lewis. Bankruptcy in Canada, 3rd ed. B...</td>
+      <td>Duncan, Lewis; Honsberger, John D.</td>
+      <td>Bankruptcy in Canada, 3rd ed.</td>
+      <td>Book</td>
+      <td>1961</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1990</td>
+      <td>[1990] 1 SCR 1025</td>
+      <td>Canadian Archives: Documents relating to the C...</td>
+      <td>Shortt, Adam; Dought, Arthur G.</td>
+      <td>Documents relating to the Constitutional Histo...</td>
+      <td>Book</td>
+      <td>1907</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1990</td>
+      <td>[1990] 1 SCR 1025</td>
+      <td>Colden, Cadwallader. The History of the Five I...</td>
+      <td>Colden, Cadwallader</td>
+      <td>The History of the Five Indian Nations of Canada</td>
+      <td>book</td>
+      <td>1747</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1990</td>
+      <td>[1990] 1 SCR 1025</td>
+      <td>Garneau, François Xavier. Histoire du Canada f...</td>
+      <td>Garneau, François Xavier</td>
+      <td>Histoire du Canada français, t. 3</td>
+      <td>Les Amis de l'Histoire</td>
+      <td>1969</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>10458</th>
+      <td>2022</td>
+      <td>2022 SCC 9</td>
+      <td>Lederman, Sidney N., Alan W. Bryant and Michel...</td>
+      <td>Lederman, Sidney N.; Bryant, Alan W.; Fuerst, ...</td>
+      <td>Sopinka, Lederman &amp; Bryant: The Law of Evidenc...</td>
+      <td>book</td>
+      <td>2018</td>
+    </tr>
+    <tr>
+      <th>10459</th>
+      <td>2022</td>
+      <td>2022 SCC 9</td>
+      <td>McWilliams’ Canadian Criminal Evidence, vols. ...</td>
+      <td>Hill, S. Casey; Tanovich, David M.; Strezos, L...</td>
+      <td>McWilliams’ Canadian Criminal Evidence, vols. ...</td>
+      <td>na</td>
+      <td>2022</td>
+    </tr>
+    <tr>
+      <th>10460</th>
+      <td>2022</td>
+      <td>2022 SCC 9</td>
+      <td>Paciocco, David M., Palma Paciocco and Lee Stu...</td>
+      <td>Paciocco, David M.; Paciocco, Palma; Stuesser,...</td>
+      <td>The Law of Evidence, 8th ed.</td>
+      <td>book</td>
+      <td>2020</td>
+    </tr>
+    <tr>
+      <th>10461</th>
+      <td>2022</td>
+      <td>2022 SCC 9</td>
+      <td>Salhany, Roger E. Canadian Criminal Procedure,...</td>
+      <td>Salhany, Roger E.</td>
+      <td>Canadian Criminal Procedure, vol. 1</td>
+      <td>book</td>
+      <td>2021</td>
+    </tr>
+    <tr>
+      <th>10462</th>
+      <td>2022</td>
+      <td>2022 SCC 9</td>
+      <td>Wright, Cecil A. “The Law of Evidence: Present...</td>
+      <td>Wright, Cecil A.</td>
+      <td>The Law of Evidence: Present and Future</td>
+      <td>Can. Bar Rev.</td>
+      <td>1942</td>
+    </tr>
+  </tbody>
+</table>
+<p>10463 rows × 7 columns</p>
+</div>
+</div>
+</div>
+<div class="cell" data-execution_count="188">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="co"># group by year and case, then count number of citations</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>citations_count <span class="op">=</span> master.groupby([<span class="st">'year'</span>, <span class="st">'decision_citation'</span>])[<span class="st">'cites'</span>].count()</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># calculate the mean of the citations count per case per year</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>avg_citations <span class="op">=</span> citations_count.groupby(level<span class="op">=</span><span class="st">'year'</span>).mean()</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>avg_citations.plot()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="188">
+<pre><code>&lt;AxesSubplot: xlabel='year'&gt;</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<p><img src="index_files/figure-html/cell-13-output-2.png" class="img-fluid"></p>
+</div>
+</div>
+<p>So this shows that, for cases where there was a citation, the total number of citations per year looks to be trending down but, at least in the past few years, the average number of citations per case might be trending up a bit. The data is very noisy so it’s hard to draw firm conclusions.</p>
+<p>Now let’s use some modern AI to build a more impressive dataset. I am going to use the AI models that power ChatGPT to extract information from each citation. In particular, I’m interested in getting the author and the title of the piece. We will also see if we can get the year of publication and the journal title, if available. Here, the art is to develop a prompt that explains to the AI model what we want it to return. Let’s begin with some tests.</p>
+<div class="cell" data-execution_count="99">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> openai</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> ast</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="77">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>test_cites <span class="op">=</span> <span class="bu">list</span>(master.loc[<span class="dv">0</span>:<span class="dv">5</span>,<span class="st">'cites'</span>])</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>test_cites</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="77">
+<pre><code>['Canada. Law Reform Commission. Working Paper 5. Restitution and Compensation. Ottawa: Information Canada, 1974.',
+ 'Duncan, Lewis. Bankruptcy in Canada, 3rd ed. By Lewis Duncan and John D. Honsberger. Toronto: Canadian Legal Authors, 1961.',
+ "Canadian Archives: Documents relating to the Constitutional History of Canada 1759-1791, 2nd and rev. ed., Part I. Edited by Adam Shortt and Arthur G. Dought. Ottawa: King's Printer.",
+ 'Colden, Cadwallader. The History of the Five Indian Nations of Canada. London: T. Osborne, 1747.',
+ "Garneau, François Xavier. Histoire du Canada français, t. 3. Montréal: Les Amis de l'Histoire, 1969.",
+ "Jésuites. Relations des jésuites contenant ce qui s'est passé de plus remarquable dans les missions des Pères de la Compagnie de Jésus dans la Nouvelle‑France, vol. 2. Québec: Augustin Côté, 1858."]</code></pre>
+</div>
+</div>
+<p>Now that we have these five citations, let’s write a prompt that will extract information from them.</p>
+<div class="cell" data-execution_count="134">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"""</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="st">You are a tool used to extract bibliographic inforamtion from a citation.</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="st">Only return a dictionary object. Do not provide any other ouput.</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="st">Make sure all the keys are lowercase.</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a><span class="st">I will give you a citation and it is your job to return a dictionary object with the following keys:</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a><span class="st">-authors: (semi-colon separated list authors). This list should be of all the authors by last name, comma, first name. Do not include any middle initials.</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="st">-title: title of paper or book</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a><span class="st">-title of publication: journal the paper was published in. If it was published as a book, just say book. If it was published as a chapter in a book, return the title of the book</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a><span class="st">-year of publication: year it was published in</span></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="st">The most important thing is that the return be a dictionary object.</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="st">Do not provide feedback or explanations. Only return dictionary objects.</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a><span class="st">Do not provide notes. If you need to make a judgement call, make a judgement call. You are not verbose.</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a><span class="st">If the answer to any query is null, return "na" in quotation marks (like this: "na")."""</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now let’s run the test.</p>
+<div class="cell" data-execution_count="193">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> test <span class="kw">in</span> test_cites:</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>    res <span class="op">=</span> openai.ChatCompletion.create(</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>      model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>      messages<span class="op">=</span>[</span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt},</span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>            {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: test},</span>
+<span id="cb25-7"><a href="#cb25-7" aria-hidden="true" tabindex="-1"></a>        ]</span>
+<span id="cb25-8"><a href="#cb25-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb25-9"><a href="#cb25-9" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(test)</span>
+<span id="cb25-10"><a href="#cb25-10" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(res[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Canada. Law Reform Commission. Working Paper 5. Restitution and Compensation. Ottawa: Information Canada, 1974.
+{
+    "authors": "Commission, Canada Law Reform",
+    "title": "Restitution and Compensation",
+    "title of publication": "Working Paper 5",
+    "year of publication": "1974"
+}
+Duncan, Lewis. Bankruptcy in Canada, 3rd ed. By Lewis Duncan and John D. Honsberger. Toronto: Canadian Legal Authors, 1961.
+{'authors': 'Duncan, Lewis; Honsberger, John D.',
+ 'title': 'Bankruptcy in Canada, 3rd ed.',
+ 'title of publication': 'Book',
+ 'year of publication': '1961'}
+Canadian Archives: Documents relating to the Constitutional History of Canada 1759-1791, 2nd and rev. ed., Part I. Edited by Adam Shortt and Arthur G. Dought. Ottawa: King's Printer.
+{
+    "authors": "Shortt, Adam G.; Dought, Arthur G.",
+    "title": "Documents relating to the Constitutional History of Canada 1759-1791",
+    "title of publication": "Book",
+    "year of publication": "1907"
+}
+Colden, Cadwallader. The History of the Five Indian Nations of Canada. London: T. Osborne, 1747.
+{'authors': 'Colden, Cadwallader', 'title': 'The History of the Five Indian Nations of Canada', 'title of publication': 'book', 'year of publication': '1747'}
+Garneau, François Xavier. Histoire du Canada français, t. 3. Montréal: Les Amis de l'Histoire, 1969.
+{
+  "authors": "Garneau, François Xavier",
+  "title": "Histoire du Canada français, t. 3",
+  "title of publication": "Les Amis de l'Histoire",
+  "year of publication": "1969"
+}
+Jésuites. Relations des jésuites contenant ce qui s'est passé de plus remarquable dans les missions des Pères de la Compagnie de Jésus dans la Nouvelle‑France, vol. 2. Québec: Augustin Côté, 1858.
+{
+  "authors": "Jésuites",
+  "title": "Relations des jésuites contenant ce qui s'est passé de plus remarquable dans les missions des Pères de la Compagnie de Jésus dans la Nouvelle‑France, vol. 2",
+  "title of publication": "na",
+  "year of publication": "1858"
+}</code></pre>
+</div>
+</div>
+<p>This looks very good. We’ll run it for the whole dataset now. This will incur some costs, and take a few hours, so be mindful.</p>
+<div class="cell" data-execution_count="155">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> idx,row <span class="kw">in</span> master.iterrows():</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> idx <span class="op">%</span> <span class="dv">100</span> <span class="op">==</span> <span class="dv">0</span>:</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f"This is iteration </span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>    cite <span class="op">=</span> row[<span class="st">'cites'</span>]</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    flag <span class="op">=</span> <span class="st">'n'</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>    count <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> flag <span class="op">==</span> <span class="st">'n'</span>:</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>            res <span class="op">=</span> openai.ChatCompletion.create(</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a>            model<span class="op">=</span><span class="st">"gpt-3.5-turbo"</span>,</span>
+<span id="cb27-12"><a href="#cb27-12" aria-hidden="true" tabindex="-1"></a>            messages<span class="op">=</span>[</span>
+<span id="cb27-13"><a href="#cb27-13" aria-hidden="true" tabindex="-1"></a>                    {<span class="st">"role"</span>: <span class="st">"system"</span>, <span class="st">"content"</span>: prompt},</span>
+<span id="cb27-14"><a href="#cb27-14" aria-hidden="true" tabindex="-1"></a>                    {<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: cite},</span>
+<span id="cb27-15"><a href="#cb27-15" aria-hidden="true" tabindex="-1"></a>                ]</span>
+<span id="cb27-16"><a href="#cb27-16" aria-hidden="true" tabindex="-1"></a>            )</span>
+<span id="cb27-17"><a href="#cb27-17" aria-hidden="true" tabindex="-1"></a>            </span>
+<span id="cb27-18"><a href="#cb27-18" aria-hidden="true" tabindex="-1"></a>            answer <span class="op">=</span> ast.literal_eval(res[<span class="st">'choices'</span>][<span class="dv">0</span>][<span class="st">'message'</span>][<span class="st">'content'</span>])</span>
+<span id="cb27-19"><a href="#cb27-19" aria-hidden="true" tabindex="-1"></a>            master.loc[idx,<span class="st">'authors'</span>] <span class="op">=</span> answer[<span class="st">'authors'</span>]</span>
+<span id="cb27-20"><a href="#cb27-20" aria-hidden="true" tabindex="-1"></a>            master.loc[idx,<span class="st">'title'</span>] <span class="op">=</span> answer[<span class="st">'title'</span>]</span>
+<span id="cb27-21"><a href="#cb27-21" aria-hidden="true" tabindex="-1"></a>            master.loc[idx,<span class="st">'publication'</span>] <span class="op">=</span> answer[<span class="st">'title of publication'</span>]</span>
+<span id="cb27-22"><a href="#cb27-22" aria-hidden="true" tabindex="-1"></a>            master.loc[idx,<span class="st">'year_pub'</span>] <span class="op">=</span> answer[<span class="st">'year of publication'</span>]</span>
+<span id="cb27-23"><a href="#cb27-23" aria-hidden="true" tabindex="-1"></a>            flag <span class="op">=</span> <span class="st">'y'</span></span>
+<span id="cb27-24"><a href="#cb27-24" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span>:</span>
+<span id="cb27-25"><a href="#cb27-25" aria-hidden="true" tabindex="-1"></a>            count <span class="op">+=</span> <span class="dv">1</span></span>
+<span id="cb27-26"><a href="#cb27-26" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> count <span class="op">==</span> <span class="dv">5</span>:</span>
+<span id="cb27-27"><a href="#cb27-27" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(<span class="ss">f'error </span><span class="sc">{</span>idx<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb27-28"><a href="#cb27-28" aria-hidden="true" tabindex="-1"></a>                flag <span class="op">=</span> <span class="st">'y'</span></span>
+<span id="cb27-29"><a href="#cb27-29" aria-hidden="true" tabindex="-1"></a>                master.loc[idx,<span class="st">'authors'</span>] <span class="op">=</span> <span class="st">'error'</span></span>
+<span id="cb27-30"><a href="#cb27-30" aria-hidden="true" tabindex="-1"></a>                master.loc[idx,<span class="st">'title'</span>] <span class="op">=</span> <span class="st">'error'</span></span>
+<span id="cb27-31"><a href="#cb27-31" aria-hidden="true" tabindex="-1"></a>                master.loc[idx,<span class="st">'publication'</span>] <span class="op">=</span> <span class="st">'error'</span></span>
+<span id="cb27-32"><a href="#cb27-32" aria-hidden="true" tabindex="-1"></a>                master.loc[idx,<span class="st">'year_pub'</span>] <span class="op">=</span> <span class="st">'error'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>This is iteration 0
+This is iteration 100
+This is iteration 200
+This is iteration 300
+This is iteration 400
+This is iteration 500
+This is iteration 600
+This is iteration 700
+This is iteration 800
+This is iteration 900
+This is iteration 1000
+This is iteration 1100
+This is iteration 1200
+This is iteration 1300
+This is iteration 1400
+This is iteration 1500
+This is iteration 1600
+This is iteration 1700
+This is iteration 1800
+This is iteration 1900
+This is iteration 2000
+This is iteration 2100
+This is iteration 2200
+error 2204
+error 2268
+This is iteration 2300
+error 2322
+This is iteration 2400
+error 2427
+error 2454
+This is iteration 2500
+This is iteration 2600
+This is iteration 2700
+This is iteration 2800
+This is iteration 2900
+This is iteration 3000
+This is iteration 3100
+This is iteration 3200
+This is iteration 3300
+This is iteration 3400
+This is iteration 3500
+This is iteration 3600
+This is iteration 3700
+This is iteration 3800
+This is iteration 3900
+error 3978
+error 3984
+This is iteration 4000
+This is iteration 4100
+This is iteration 4200
+This is iteration 4300
+This is iteration 4400
+error 4443
+This is iteration 4500
+This is iteration 4600
+This is iteration 4700
+This is iteration 4800
+This is iteration 4900
+This is iteration 5000
+This is iteration 5100
+This is iteration 5200
+This is iteration 5300
+This is iteration 5400
+This is iteration 5500
+This is iteration 5600
+This is iteration 5700
+This is iteration 5800
+error 5871
+This is iteration 5900
+This is iteration 6000
+This is iteration 6100
+This is iteration 6200
+This is iteration 6300
+This is iteration 6400
+This is iteration 6500
+This is iteration 6600
+This is iteration 6700
+This is iteration 6800
+This is iteration 6900
+This is iteration 7000
+This is iteration 7100
+This is iteration 7200
+This is iteration 7300
+This is iteration 7400
+This is iteration 7500
+This is iteration 7600
+This is iteration 7700
+This is iteration 7800
+This is iteration 7900
+This is iteration 8000
+This is iteration 8100
+error 8162
+This is iteration 8200
+This is iteration 8300
+This is iteration 8400
+This is iteration 8500
+This is iteration 8600
+error 8604
+This is iteration 8700
+This is iteration 8800
+This is iteration 8900
+error 8905
+This is iteration 9000
+error 9062
+This is iteration 9100
+This is iteration 9200
+This is iteration 9300
+This is iteration 9400
+This is iteration 9500
+This is iteration 9600
+This is iteration 9700
+This is iteration 9800
+This is iteration 9900
+error 9915
+This is iteration 10000
+This is iteration 10100
+This is iteration 10200
+This is iteration 10300
+This is iteration 10400</code></pre>
+</div>
+</div>
+<p>Let’s save our results:</p>
+<div class="cell" data-execution_count="164">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>master.to_csv(<span class="st">'results.csv'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>And now let’s do some exploratory analysis.</p>
+<div class="cell" data-execution_count="167">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>master[<span class="st">'publication'</span>].value_counts().head(<span class="dv">30</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="167">
+<pre><code>Book                                2832
+book                                2039
+na                                  1008
+Can. Bar Rev.                        181
+McGill L.J.                          116
+House of Commons Debates             101
+Crim. L.Q.                            91
+C.R.                                  81
+S.C.L.R.                              75
+U.T.L.J.                              68
+Alta. L. Rev.                         64
+Can. Bus. L.J.                        55
+R. du B.                              54
+Osgoode Hall L.J.                     47
+Queen’s L.J.                          45
+U.B.C. L. Rev.                        37
+Canadian Family Law Quarterly         35
+Ottawa L. Rev.                        34
+R.G.D.                                33
+Harv. L. Rev.                         33
+C. de D.                              33
+R.J.T.                                32
+Queen's L.J.                          27
+Sask. L. Rev.                         26
+N.J.C.L.                              26
+Can. J. Fam. L.                       26
+R.F.L.                                25
+Man. L.J.                             25
+Canada. House of Commons Debates      25
+U.T. Fac. L. Rev.                     25
+Name: publication, dtype: int64</code></pre>
+</div>
+</div>
+<div class="cell" data-execution_count="192">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>master[<span class="st">'authors'</span>].value_counts().head(<span class="dv">15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="192">
+<pre><code>na                                                     544
+Sullivan, Ruth                                         132
+Canada, House of Commons                               114
+Hogg, Peter W                                           97
+Driedger, Elmer A.                                      79
+Stuart, Don                                             64
+Côté, Pierre-André                                      54
+Sopinka, John; Lederman, Sidney N.; Bryant, Alan W.     52
+Canada                                                  52
+Wigmore, John Henry                                     46
+Canada. Law Reform Commission                           42
+Hogg, Peter W.                                          39
+Côté, Pierre‑André                                      37
+Roach, Kent                                             35
+Bala, Nicholas                                          33
+Name: authors, dtype: int64</code></pre>
+</div>
+</div>
+<p>Ok, we can reach some tentative conclusions to our research questions.</p>
+<ol type="1">
+<li>The number of non-case citations has been trending down, but there may be a bit of a spike lately per case.</li>
+<li>The most cited author is Peter Hogg (he shows up on the list twice). After Professor Hogg, Ruth Sullivan is the most cited scholar.</li>
+<li>The most cited journal is the Canadian Bar Review.</li>
+</ol>
+
+
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Simon Wallace (2022)</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/simon-lawyer/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/simonwallace/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
